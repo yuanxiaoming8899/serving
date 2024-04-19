@@ -34,27 +34,7 @@ curl -d <span class="pl-s"><span class="pl-pds">'</span>{"instances": [1.0, 2.0,
     -X POST http://localhost:8501/v1/models/half_plus_two:predict
 
 <span class="pl-c"><span class="pl-c">#</span> Returns =&gt; { "predictions": [2.5, 3.0, 4.5] }</span></pre><div class="zeroclipboard-container">
-    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# Download the TensorFlow Serving Docker image and repo
-docker pull tensorflow/serving
-
-git clone https://github.com/tensorflow/serving
-# Location of demo models
-TESTDATA=&quot;$(pwd)/serving/tensorflow_serving/servables/tensorflow/testdata&quot;
-
-# Start TensorFlow Serving container and open the REST API port
-docker run -t --rm -p 8501:8501 \
-    -v &quot;$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two&quot; \
-    -e MODEL_NAME=half_plus_two \
-    tensorflow/serving &amp;
-
-# Query the model using the predict API
-curl -d '{&quot;instances&quot;: [1.0, 2.0, 5.0]}' \
-    -X POST http://localhost:8501/v1/models/half_plus_two:predict
-
-# Returns => { &quot;predictions&quot;: [2.5, 3.0, 4.5] }" tabindex="0" role="button">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
+   
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
     <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
 </svg>
