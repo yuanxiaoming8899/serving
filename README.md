@@ -1,121 +1,109 @@
-# TensorFlow Serving
+<div class="Box-sc-g0xbh4-0 bJMeLZ js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TensorFlow 服务</font></font></h1><a id="user-content-tensorflow-serving" class="anchor" aria-label="永久链接：TensorFlow 服务" href="#tensorflow-serving"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a href="https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu.html" rel="nofollow"><img src="https://camo.githubusercontent.com/a32bc7ab2dec2ae89a63d2717c932a5872feb413e9d6bbb5781312f83fa0c8c2/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f74656e736f72666c6f772d73657276696e672d6b6f6b6f726f2d6275696c642d6261646765732d6275636b65742f7562756e74752e737667" alt="Ubuntu 构建状态" data-canonical-src="https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu.svg" style="max-width: 100%;"></a>
+<a href="https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu-tf-head.html" rel="nofollow"><img src="https://camo.githubusercontent.com/569c05f5f898291f31aa69233380ecba3bb3e95867e703589aca5d8d058a36a9/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f74656e736f72666c6f772d73657276696e672d6b6f6b6f726f2d6275696c642d6261646765732d6275636b65742f7562756e74752d74662d686561642e737667" alt="TF HEAD 的 Ubuntu 构建状态" data-canonical-src="https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu-tf-head.svg" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/44db83dad6e2be05c302cf84a7cdc34bb41595961c19f4fe77e1e0e75c171957/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f74656e736f72666c6f772d73657276696e672d6b6f6b6f726f2d6275696c642d6261646765732d6275636b65742f646f636b65722d6370752d6e696768746c792e737667"><img src="https://camo.githubusercontent.com/44db83dad6e2be05c302cf84a7cdc34bb41595961c19f4fe77e1e0e75c171957/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f74656e736f72666c6f772d73657276696e672d6b6f6b6f726f2d6275696c642d6261646765732d6275636b65742f646f636b65722d6370752d6e696768746c792e737667" alt="Docker CPU 每晚构建状态" data-canonical-src="https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/docker-cpu-nightly.svg" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4f1dc3d0e24aa10528ed25b2cd73a3261d26caa4a03ab3085a32a179f5740976/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f74656e736f72666c6f772d73657276696e672d6b6f6b6f726f2d6275696c642d6261646765732d6275636b65742f646f636b65722d6770752d6e696768746c792e737667"><img src="https://camo.githubusercontent.com/4f1dc3d0e24aa10528ed25b2cd73a3261d26caa4a03ab3085a32a179f5740976/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f74656e736f72666c6f772d73657276696e672d6b6f6b6f726f2d6275696c642d6261646765732d6275636b65742f646f636b65722d6770752d6e696768746c792e737667" alt="Docker GPU 每晚构建状态" data-canonical-src="https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/docker-gpu-nightly.svg" style="max-width: 100%;"></a></p>
+<hr>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TensorFlow Serving 是一种灵活、高性能的机器学习模型服务系统，专为生产环境而设计。它涉及机器学习的</font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">推理方面，在</font></font></em><font style="vertical-align: inherit;"></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">训练</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后获取模型</font><font style="vertical-align: inherit;">并管理其生命周期，通过高性能、引用计数的查找表为客户提供版本化访问。 TensorFlow Serving 提供与 TensorFlow 模型的开箱即用集成，但可以轻松扩展以服务其他类型的模型和数据。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要注意几个特点：</font></font></p>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以同时服务多个模型或同一模型的多个版本</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">公开 gRPC 和 HTTP 推理端点</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允许部署新模型版本而无需更改任何客户端代码</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持金丝雀新版本和A/B测试实验模型</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由于高效、低开销的实施，将推理时间的延迟降至最低</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">具有调度程序，可将单个推理请求分组以便在 GPU 上联合执行，并具有可配置的延迟控制</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持许多</font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：Tensorflow 模型、嵌入、词汇、特征转换，甚至非基于 Tensorflow 的机器学习模型</font></font></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在 60 秒内提供 Tensorflow 模型</font></font></h2><a id="user-content-serve-a-tensorflow-model-in-60-seconds" class="anchor" aria-label="永久链接：在 60 秒内提供 Tensorflow 模型" href="#serve-a-tensorflow-model-in-60-seconds"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-c"><span class="pl-c">#</span> Download the TensorFlow Serving Docker image and repo</span>
+docker pull tensorflow/serving
 
-[![Ubuntu Build Status](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu.svg)](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu.html)
-[![Ubuntu Build Status at TF HEAD](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu-tf-head.svg)](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu-tf-head.html)
-![Docker CPU Nightly Build Status](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/docker-cpu-nightly.svg)
-![Docker GPU Nightly Build Status](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/docker-gpu-nightly.svg)
+git clone https://github.com/tensorflow/serving
+<span class="pl-c"><span class="pl-c">#</span> Location of demo models</span>
+TESTDATA=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>pwd<span class="pl-pds">)</span></span>/serving/tensorflow_serving/servables/tensorflow/testdata<span class="pl-pds">"</span></span>
 
-----
-TensorFlow Serving is a flexible, high-performance serving system for
-machine learning models, designed for production environments. It deals with
-the *inference* aspect of machine learning, taking models after *training* and
-managing their lifetimes, providing clients with versioned access via
-a high-performance, reference-counted lookup table.
-TensorFlow Serving provides out-of-the-box integration with TensorFlow models,
-but can be easily extended to serve other types of models and data.
+<span class="pl-c"><span class="pl-c">#</span> Start TensorFlow Serving container and open the REST API port</span>
+docker run -t --rm -p 8501:8501 \
+    -v <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$TESTDATA</span>/saved_model_half_plus_two_cpu:/models/half_plus_two<span class="pl-pds">"</span></span> \
+    -e MODEL_NAME=half_plus_two \
+    tensorflow/serving <span class="pl-k">&amp;</span>
 
-To note a few features:
+<span class="pl-c"><span class="pl-c">#</span> Query the model using the predict API</span>
+curl -d <span class="pl-s"><span class="pl-pds">'</span>{"instances": [1.0, 2.0, 5.0]}<span class="pl-pds">'</span></span> \
+    -X POST http://localhost:8501/v1/models/half_plus_two:predict
 
--   Can serve multiple models, or multiple versions of the same model
-    simultaneously
--   Exposes both gRPC as well as HTTP inference endpoints
--   Allows deployment of new model versions without changing any client code
--   Supports canarying new versions and A/B testing experimental models
--   Adds minimal latency to inference time due to efficient, low-overhead
-    implementation
--   Features a scheduler that groups individual inference requests into batches
-    for joint execution on GPU, with configurable latency controls
--   Supports many *servables*: Tensorflow models, embeddings, vocabularies,
-    feature transformations and even non-Tensorflow-based machine learning
-    models
-
-## Serve a Tensorflow model in 60 seconds
-```bash
-# Download the TensorFlow Serving Docker image and repo
+<span class="pl-c"><span class="pl-c">#</span> Returns =&gt; { "predictions": [2.5, 3.0, 4.5] }</span></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# Download the TensorFlow Serving Docker image and repo
 docker pull tensorflow/serving
 
 git clone https://github.com/tensorflow/serving
 # Location of demo models
-TESTDATA="$(pwd)/serving/tensorflow_serving/servables/tensorflow/testdata"
+TESTDATA=&quot;$(pwd)/serving/tensorflow_serving/servables/tensorflow/testdata&quot;
 
 # Start TensorFlow Serving container and open the REST API port
 docker run -t --rm -p 8501:8501 \
-    -v "$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two" \
+    -v &quot;$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two&quot; \
     -e MODEL_NAME=half_plus_two \
-    tensorflow/serving &
+    tensorflow/serving &amp;
 
 # Query the model using the predict API
-curl -d '{"instances": [1.0, 2.0, 5.0]}' \
+curl -d '{&quot;instances&quot;: [1.0, 2.0, 5.0]}' \
     -X POST http://localhost:8501/v1/models/half_plus_two:predict
 
-# Returns => { "predictions": [2.5, 3.0, 4.5] }
-```
-
-## End-to-End Training & Serving Tutorial
-
-Refer to the official Tensorflow documentations site for [a complete tutorial to train and serve a Tensorflow Model](https://www.tensorflow.org/tfx/tutorials/serving/rest_simple).
-
-
-## Documentation
-
-### Set up
-
-The easiest and most straight-forward way of using TensorFlow Serving is with
-Docker images. We highly recommend this route unless you have specific needs
-that are not addressed by running in a container.
-
-*   [Install Tensorflow Serving using Docker](tensorflow_serving/g3doc/docker.md)
-    *(Recommended)*
-*   [Install Tensorflow Serving without Docker](tensorflow_serving/g3doc/setup.md)
-    *(Not Recommended)*
-*   [Build Tensorflow Serving from Source with Docker](tensorflow_serving/g3doc/building_with_docker.md)
-*   [Deploy Tensorflow Serving on Kubernetes](tensorflow_serving/g3doc/serving_kubernetes.md)
-
-### Use
-
-#### Export your Tensorflow model
-
-In order to serve a Tensorflow model, simply export a SavedModel from your
-Tensorflow program.
-[SavedModel](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md)
-is a language-neutral, recoverable, hermetic serialization format that enables
-higher-level systems and tools to produce, consume, and transform TensorFlow
-models.
-
-Please refer to [Tensorflow documentation](https://www.tensorflow.org/guide/saved_model#save_and_restore_models)
-for detailed instructions on how to export SavedModels.
-
-#### Configure and Use Tensorflow Serving
-
-* [Follow a tutorial on Serving Tensorflow models](tensorflow_serving/g3doc/serving_basic.md)
-* [Configure Tensorflow Serving to make it fit your serving use case](tensorflow_serving/g3doc/serving_config.md)
-* Read the [Performance Guide](tensorflow_serving/g3doc/performance.md)
-and learn how to [use TensorBoard to profile and optimize inference requests](tensorflow_serving/g3doc/tensorboard.md)
-* Read the [REST API Guide](tensorflow_serving/g3doc/api_rest.md)
-or [gRPC API definition](https://github.com/tensorflow/serving/tree/master/tensorflow_serving/apis)
-* [Use SavedModel Warmup if initial inference requests are slow due to lazy initialization of graph](tensorflow_serving/g3doc/saved_model_warmup.md)
-* [If encountering issues regarding model signatures, please read the SignatureDef documentation](tensorflow_serving/g3doc/signature_defs.md)
-* If using a model with custom ops, [learn how to serve models with custom ops](tensorflow_serving/g3doc/custom_op.md)
-
-### Extend
-
-Tensorflow Serving's architecture is highly modular. You can use some parts
-individually (e.g. batch scheduling) and/or extend it to serve new use cases.
-
-* [Ensure you are familiar with building Tensorflow Serving](tensorflow_serving/g3doc/building_with_docker.md)
-* [Learn about Tensorflow Serving's architecture](tensorflow_serving/g3doc/architecture.md)
-* [Explore the Tensorflow Serving C++ API reference](https://www.tensorflow.org/tfx/serving/api_docs/cc/)
-* [Create a new type of Servable](tensorflow_serving/g3doc/custom_servable.md)
-* [Create a custom Source of Servable versions](tensorflow_serving/g3doc/custom_source.md)
-
-## Contribute
-
-
-**If you'd like to contribute to TensorFlow Serving, be sure to review the
-[contribution guidelines](CONTRIBUTING.md).**
-
-
-## For more information
-
-Please refer to the official [TensorFlow website](http://tensorflow.org) for
-more information.
+# Returns => { &quot;predictions&quot;: [2.5, 3.0, 4.5] }" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">端到端培训和服务教程</font></font></h2><a id="user-content-end-to-end-training--serving-tutorial" class="anchor" aria-label="永久链接：端到端培训和服务教程" href="#end-to-end-training--serving-tutorial"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请参阅官方 Tensorflow 文档网站，获取</font></font><a href="https://www.tensorflow.org/tfx/tutorials/serving/rest_simple" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">训练和服务 Tensorflow 模型的完整教程</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档</font></font></h2><a id="user-content-documentation" class="anchor" aria-label="永久链接：文档" href="#documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font></font></h3><a id="user-content-set-up" class="anchor" aria-label="固定链接：设置" href="#set-up"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 TensorFlow Serving 最简单、最直接的方法是使用 Docker 镜像。我们强烈推荐此路线，除非您有无法通过在容器中运行来解决的特定需求。</font></font></p>
+<ul dir="auto">
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/docker.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 Docker 安装 Tensorflow Serving </font></font></a>
+<em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（推荐）</font></font></em></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/setup.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不使用 Docker 安装 Tensorflow Serving </font></font></a>
+<em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（不推荐）</font></font></em></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/building_with_docker.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 Docker 从源代码构建 Tensorflow 服务</font></font></a></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/serving_kubernetes.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在 Kubernetes 上部署 Tensorflow 服务</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font></h3><a id="user-content-use" class="anchor" aria-label="永久链接：使用" href="#use"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导出您的 Tensorflow 模型</font></font></h4><a id="user-content-export-your-tensorflow-model" class="anchor" aria-label="永久链接：导出您的 Tensorflow 模型" href="#export-your-tensorflow-model"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为了提供 Tensorflow 模型，只需从 Tensorflow 程序中导出 SavedModel 即可。
+ </font></font><a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SavedModel</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+是一种语言中立、可恢复、密封的序列化格式，使更高级别的系统和工具能够生成、使用和转换 TensorFlow 模型。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+有关如何导出 SavedModel 的详细说明，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="https://www.tensorflow.org/guide/saved_model#save_and_restore_models" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tensorflow 文档。</font></font></a><font style="vertical-align: inherit;"></font></p>
+<div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置和使用 Tensorflow 服务</font></font></h4><a id="user-content-configure-and-use-tensorflow-serving" class="anchor" aria-label="永久链接：配置和使用 Tensorflow 服务" href="#configure-and-use-tensorflow-serving"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/serving_basic.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">遵循有关服务 Tensorflow 模型的教程</font></font></a></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/serving_config.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置 Tensorflow Serving 以使其适合您的服务用例</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">阅读</font></font><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/performance.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">性能指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+并了解如何</font></font><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/tensorboard.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 TensorBoard 分析和优化推理请求</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">阅读</font></font><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/api_rest.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REST API 指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+或</font></font><a href="https://github.com/tensorflow/serving/tree/master/tensorflow_serving/apis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gRPC API 定义</font></font></a></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/saved_model_warmup.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果初始推理请求由于图的延迟初始化而缓慢，请使用 SavedModel Warmup</font></font></a></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/signature_defs.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果遇到有关模型签名的问题，请阅读 SignatureDef 文档</font></font></a></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果使用具有自定义操作的模型，</font></font><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/custom_op.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请了解如何为具有自定义操作的模型提供服务</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">延长</font></font></h3><a id="user-content-extend" class="anchor" aria-label="永久链接： 扩展" href="#extend"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tensorflow Serving 的架构是高度模块化的。您可以单独使用某些部分（例如批量调度）和/或扩展它以服务于新的用例。</font></font></p>
+<ul dir="auto">
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/building_with_docker.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">确保您熟悉构建 Tensorflow Serving</font></font></a></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/architecture.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解 Tensorflow Serving 的架构</font></font></a></li>
+<li><a href="https://www.tensorflow.org/tfx/serving/api_docs/cc/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">探索 Tensorflow Serving C++ API 参考</font></font></a></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/custom_servable.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建新类型的 Servable</font></font></a></li>
+<li><a href="/tensorflow/serving/blob/master/tensorflow_serving/g3doc/custom_source.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建可服务版本的自定义源</font></font></a></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">贡献</font></font></h2><a id="user-content-contribute" class="anchor" aria-label="永久链接：贡献" href="#contribute"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您想为 TensorFlow Serving 做出贡献，请务必查看
+</font></font><a href="/tensorflow/serving/blob/master/CONTRIBUTING.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">贡献指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></strong></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解更多信息</font></font></h2><a id="user-content-for-more-information" class="anchor" aria-label="永久链接：了解更多信息" href="#for-more-information"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请参阅</font></font><a href="http://tensorflow.org" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TensorFlow 官方网站</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解更多信息。</font></font></p>
+</article></div>
